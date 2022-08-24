@@ -243,7 +243,7 @@ class Game {
             calculatedScore = this.compareColors(inputRgb);
         }
 
-        calculatedScore = 100 - Math.round(calculatedScore);
+        calculatedScore = (100 - calculatedScore).toFixed(2);
 
         // set modal content
         this.score.innerText = calculatedScore.toString();
@@ -265,7 +265,7 @@ class Game {
     updateScoreHistory() {
         if (this.scores.length > 0) {
             // get the highest score
-            let r = RegExp("([0-9]+%)");
+            let r = RegExp("([0-9][0-9]\\.[0-9][0-9]%)");
             let highestScore = Math.max(...this.scores.map(score => parseFloat(r.exec(score)[1])));
 
             // set the high score if high score is not negative infinity
